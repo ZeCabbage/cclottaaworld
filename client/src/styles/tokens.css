@@ -1,0 +1,138 @@
+/* ============================================
+   Design Tokens — Single Source of Truth
+   Aespacecore + Little Thunder + Hinata 3D
+   Iridescent pastel-chrome palette
+   ============================================ */
+
+:root {
+  /* ---- Background Layers ---- */
+  --color-bg-deep: #0E0820;
+  /* Deep indigo base */
+  --color-bg-surface: #1E1040;
+  /* Elevated surface */
+  --color-bg-elevated: #2A1854;
+  /* Cards, panels */
+  --color-bg-overlay: rgba(14, 8, 32, 0.88);
+
+  /* ---- Text ---- */
+  --color-text-primary: #E2D8F0;
+  /* Lavender-tinted white */
+  --color-text-secondary: #9B8AB8;
+  /* Muted lavender */
+  --color-text-muted: rgba(226, 216, 240, 0.4);
+  --color-text-bright: #FFFFFF;
+
+  /* ---- Iridescent Pastel Palette ---- */
+  /* Primary trio — the core identity */
+  --pastel-lavender: #C4B5FD;
+  --pastel-rose: #FDA4AF;
+  --pastel-cyan: #67E8F9;
+
+  /* Extended palette */
+  --pastel-pink: #F9A8D4;
+  --pastel-peach: #FED7AA;
+  --pastel-mint: #A7F3D0;
+  --pastel-lilac: #DDD6FE;
+  --pastel-sky: #BAE6FD;
+
+  /* Neon accents (kept for emphasis moments, UI highlights) */
+  --neon-cyan: #00FFFF;
+  --neon-magenta: #FF00FF;
+  --neon-green: #39FF14;
+  --neon-pink: #FF69B4;
+  --neon-orange: #FF6347;
+  --neon-yellow: #FFD700;
+  --neon-blue: #00BFFF;
+  --neon-purple: #9B30FF;
+
+  /* Chrome / metallic */
+  --chrome-silver: #C0C0C0;
+  --chrome-highlight: #F0F0FF;
+  --chrome-shadow: #6B6B80;
+
+  /* ---- Gradients ---- */
+  --gradient-iridescent: linear-gradient(135deg, #C4B5FD 0%, #FDA4AF 35%, #67E8F9 70%, #F9A8D4 100%);
+  --gradient-chrome: linear-gradient(180deg, #F0F0FF 0%, #C0C0C0 40%, #6B6B80 100%);
+  --gradient-sky: linear-gradient(180deg, #1E1040 0%, #2A1854 30%, #3D2070 100%);
+  --gradient-rose-cyan: linear-gradient(135deg, #FDA4AF 0%, #67E8F9 100%);
+
+  /* ---- Panel System (glassmorphism) ---- */
+  --panel-bg: rgba(30, 16, 64, 0.7);
+  --panel-border: rgba(196, 181, 253, 0.2);
+  --panel-glow: rgba(196, 181, 253, 0.06);
+  --panel-glass: rgba(255, 255, 255, 0.05);
+
+  /* ---- Button System ---- */
+  --btn-bg: rgba(30, 16, 64, 0.8);
+  --btn-border: rgba(196, 181, 253, 0.35);
+  --btn-hover: rgba(196, 181, 253, 0.15);
+  --btn-active: rgba(196, 181, 253, 0.25);
+  --btn-text: #E2D8F0;
+
+  /* ---- Status Colors ---- */
+  --color-success: #A7F3D0;
+  --color-warning: #FED7AA;
+  --color-error: #FDA4AF;
+  --color-info: #BAE6FD;
+
+  /* ---- Typography ---- */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-retro: 'VT323', monospace;
+  --font-system: 'VT323', 'Courier New', monospace;
+  --font-body: 'VT323', monospace;
+
+  --text-xs: 10px;
+  --text-sm: 12px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+
+  /* ---- Spacing Scale ---- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* ---- Border & Radius ---- */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-full: 50%;
+
+  /* ---- Shadows & Glows ---- */
+  --glow-lavender: 0 0 12px rgba(196, 181, 253, 0.3);
+  --glow-rose: 0 0 12px rgba(253, 164, 175, 0.3);
+  --glow-cyan: 0 0 12px rgba(103, 232, 249, 0.3);
+  --glow-chrome: 0 0 8px rgba(240, 240, 255, 0.2);
+  --glow-text: 0 0 6px currentColor;
+
+  /* Legacy compat aliases */
+  --glow-magenta: 0 0 8px rgba(255, 0, 255, 0.3);
+  --glow-green: 0 0 8px rgba(57, 255, 20, 0.3);
+
+  /* ---- Animation Timing ---- */
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.1s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.6s;
+
+  /* ---- Layout ---- */
+  --viewport-max-width: 800px;
+  --sidebar-width: 200px;
+
+  /* ---- Z-Index Scale ---- */
+  --z-base: 1;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-debug: 9999;
+}

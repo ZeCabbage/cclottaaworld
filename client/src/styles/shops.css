@@ -1,0 +1,418 @@
+/* ============================================
+   Shop-Specific Styles
+   ============================================ */
+
+/* --- Shop Layout --- */
+.shop-screen {
+    padding: 16px;
+    animation: screen-enter 0.3s ease-out;
+}
+
+.shop-header {
+    text-align: center;
+    padding: 16px;
+    margin-bottom: 16px;
+    background: linear-gradient(180deg, #FFF0F5 0%, #FFE4F0 100%);
+    border: 2px ridge #FF69B4;
+    border-radius: 4px;
+}
+
+.shop-header h1 {
+    font-family: var(--font-pixel);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.shop-header p {
+    font-family: var(--font-comic);
+    font-size: 14px;
+    color: #666;
+}
+
+/* --- Item Grid --- */
+.shop-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 8px;
+}
+
+.shop-item {
+    background: white;
+    border: 2px solid #C0C0C0;
+    box-shadow: var(--bevel-raised);
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.shop-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--bevel-raised), 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--pink-hot);
+}
+
+.shop-item:active {
+    transform: translateY(0);
+    box-shadow: var(--bevel-sunken);
+}
+
+.shop-item .item-icon {
+    font-size: 36px;
+    margin: 4px 0;
+}
+
+.shop-item .item-name {
+    font-family: var(--font-comic);
+    font-weight: 700;
+    font-size: 13px;
+    color: #333;
+}
+
+.shop-item .item-price {
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    color: #DAA520;
+}
+
+.shop-item .item-desc {
+    font-family: var(--font-system);
+    font-size: 11px;
+    color: #666;
+}
+
+.shop-item.owned {
+    opacity: 0.6;
+    border-color: #32CD32;
+}
+
+.shop-item.owned::after {
+    content: '✓ Owned';
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: #32CD32;
+}
+
+/* --- Buy Button --- */
+.buy-btn {
+    font-family: var(--font-comic);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    background: linear-gradient(180deg, #90EE90 0%, #32CD32 100%);
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border: none;
+    box-shadow: var(--bevel-raised);
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background: linear-gradient(180deg, #A0FFA0 0%, #45DD45 100%);
+}
+
+.buy-btn:active {
+    box-shadow: var(--bevel-sunken);
+}
+
+.buy-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Back Navigation --- */
+.back-to-town {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    font-family: var(--font-comic);
+    font-size: 14px;
+    color: var(--link-color);
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: none;
+    text-decoration: underline;
+}
+
+.back-to-town:hover {
+    color: var(--link-hover);
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+}
+
+/* --- Shop Keeper --- */
+.shopkeeper {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: #FFFDE7;
+    border: 2px ridge #DAA520;
+    margin-bottom: 16px;
+}
+
+.shopkeeper-avatar {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.shopkeeper-speech {
+    font-family: var(--font-comic);
+    font-size: 14px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+}
+
+.shopkeeper-speech::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-right-color: #333;
+}
+
+/* --- Mini Game Area --- */
+.game-area {
+    background: #000;
+    border: 3px inset #808080;
+    border-radius: 4px;
+    padding: 16px;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-score {
+    font-family: var(--font-pixel);
+    font-size: 14px;
+    color: #FFD700;
+    text-align: center;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #FFD700;
+    margin-bottom: 12px;
+}
+
+.game-timer {
+    font-family: var(--font-pixel);
+    font-size: 12px;
+    color: #FF6347;
+    text-align: center;
+}
+
+/* --- Memory Card Grid --- */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #9B30FF 0%, #FF69B4 100%);
+    border: 2px outset #C0C0C0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    border-radius: 4px;
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.memory-card.flipped {
+    background: white;
+    border-color: #32CD32;
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched {
+    background: #90EE90;
+    border-color: #006400;
+    pointer-events: none;
+}
+
+.memory-card .card-face {
+    opacity: 0;
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .card-face,
+.memory-card.matched .card-face {
+    opacity: 1;
+}
+
+/* --- Click Target Game --- */
+.click-target {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFD700 0%, #FF6347 100%);
+    cursor: pointer;
+    animation: pulse-glow 0.5s ease-in-out infinite;
+    border: 2px solid #FFD700;
+}
+
+/* --- Pet Stats Bars --- */
+.stat-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.stat-label {
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    width: 80px;
+    text-align: right;
+    color: #333;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 16px;
+    background: #E0E0E0;
+    box-shadow: var(--bevel-sunken);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.stat-bar-fill.hunger {
+    background: linear-gradient(90deg, #FF6347, #FF4500);
+}
+
+.stat-bar-fill.happiness {
+    background: linear-gradient(90deg, #FF69B4, #FF1493);
+}
+
+.stat-bar-fill.energy {
+    background: linear-gradient(90deg, #32CD32, #228B22);
+}
+
+.stat-bar-text {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Pet View --- */
+.pet-display {
+    text-align: center;
+    padding: 24px;
+    position: relative;
+}
+
+.pet-sprite {
+    font-size: 80px;
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.pet-name {
+    font-family: var(--font-pixel);
+    font-size: 14px;
+    color: var(--pink-hot);
+    margin-top: 8px;
+}
+
+.pet-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+/* --- Town Map --- */
+.town-map {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    background: #90C87C;
+    overflow: hidden;
+}
+
+.town-building {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.15s, filter 0.15s;
+    text-align: center;
+}
+
+.town-building:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+    z-index: 10;
+}
+
+.town-building .building-icon {
+    font-size: 48px;
+    display: block;
+}
+
+.town-building .building-name {
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 2px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.town-building:hover .building-name {
+    opacity: 1;
+}
+
+/* --- Town Path --- */
+.town-path {
+    position: absolute;
+    background: #D2B48C;
+    border: 1px solid #C4A67A;
+}
+
+/* --- Town Decorations --- */
+.town-tree {
+    position: absolute;
+    font-size: 32px;
+    pointer-events: none;
+}
+
+.town-flower {
+    position: absolute;
+    font-size: 16px;
+    pointer-events: none;
+    animation: wobble 3s ease-in-out infinite;
+}

@@ -1,0 +1,506 @@
+/* ============================================
+   ccllottaaWorld — Design System
+   PS2 Era / Early 2000s Gaming Aesthetic
+   Sonic Adventure · Ape Escape · Gaia Online
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  /* PS2 Era Palette — Dark, neon accents, CRT glow */
+  --neon-cyan: #00FFFF;
+  --neon-magenta: #FF00FF;
+  --neon-green: #39FF14;
+  --neon-pink: #FF69B4;
+  --neon-orange: #FF6347;
+  --neon-yellow: #FFD700;
+  --neon-blue: #00BFFF;
+  --neon-purple: #9B30FF;
+
+  /* Panel colors */
+  --panel-bg: rgba(10, 5, 30, 0.85);
+  --panel-border: rgba(0, 255, 255, 0.25);
+  --panel-glow: rgba(0, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-retro: 'VT323', monospace;
+  --font-system: 'VT323', 'Courier New', monospace;
+  --font-comic: 'VT323', monospace;
+
+  /* UI values */
+  --btn-bg: rgba(20, 10, 50, 0.9);
+  --btn-border: rgba(0, 255, 255, 0.4);
+  --btn-hover: rgba(0, 255, 255, 0.15);
+  --btn-text: #CCDDEE;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-retro);
+  font-size: 16px;
+  color: #CCCCCC;
+  background: #0a0020;
+}
+
+/* --- Background Pattern --- */
+#bg-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #0a0020;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 0, 255, 0.06) 0%, transparent 50%);
+}
+
+/* Scanline overlay — subtle CRT effect */
+#bg-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px);
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* --- Scrollbar Styling (Dark/PS2) --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0020;
+  border-left: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.35);
+}
+
+/* --- Glass Panel — PS2 Menu Style --- */
+.glass-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 2px;
+  padding: 14px;
+  box-shadow:
+    0 0 8px var(--panel-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* --- Pixel Icon Base --- */
+.px-icon {
+  font-family: var(--font-pixel);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-shadow: 0 0 4px currentColor;
+}
+
+/* --- Utility Classes --- */
+.pixel-text {
+  font-family: var(--font-pixel);
+  letter-spacing: 1px;
+}
+
+.retro-text {
+  font-family: var(--font-retro);
+  font-size: 20px;
+}
+
+.rainbow-text {
+  background: linear-gradient(90deg, #FF6347, #FFD700, #39FF14, #00BFFF, #FF69B4, #9B30FF);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-shift 4s ease infinite;
+  font-weight: bold;
+}
+
+@keyframes rainbow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.sparkle {
+  text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 20px #FF69B4;
+}
+
+/* --- PS2-Style Buttons --- */
+.retro-btn {
+  font-family: var(--font-retro);
+  font-size: 16px;
+  padding: 6px 16px;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.retro-btn:hover {
+  background: var(--btn-hover);
+  border-color: var(--neon-cyan);
+  color: #FFFFFF;
+  text-shadow: 0 0 6px var(--neon-cyan);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.retro-btn:active {
+  background: rgba(0, 255, 255, 0.2);
+  transform: scale(0.97);
+}
+
+.retro-btn.primary {
+  border-color: rgba(255, 0, 255, 0.5);
+  background: rgba(255, 0, 255, 0.12);
+  color: #FF88FF;
+}
+
+.retro-btn.primary:hover {
+  background: rgba(255, 0, 255, 0.25);
+  border-color: var(--neon-magenta);
+  color: #FFFFFF;
+  text-shadow: 0 0 6px var(--neon-magenta);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+}
+
+.retro-btn.fun {
+  border-color: rgba(0, 191, 255, 0.5);
+  background: rgba(0, 191, 255, 0.12);
+  color: #88CCFF;
+}
+
+.retro-btn.fun:hover {
+  background: rgba(0, 191, 255, 0.25);
+  border-color: var(--neon-blue);
+  color: #FFFFFF;
+  text-shadow: 0 0 6px var(--neon-blue);
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.3);
+}
+
+/* Back to town button */
+.back-to-town {
+  font-family: var(--font-retro);
+  font-size: 14px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: all 0.1s;
+}
+
+.back-to-town:hover {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+/* --- Marquee --- */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--neon-yellow);
+  font-family: var(--font-retro);
+  font-size: 18px;
+  padding: 4px 0;
+  border-top: 1px solid rgba(0, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* --- Loading Animation --- */
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes loading-dots {
+  0% {
+    content: '';
+  }
+
+  25% {
+    content: '.';
+  }
+
+  50% {
+    content: '..';
+  }
+
+  75% {
+    content: '...';
+  }
+}
+
+/* --- Blink --- */
+@keyframes blink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* --- Pixel Art Rendering --- */
+.pixel-render {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* --- Under Construction --- */
+.under-construction {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: #FF6347;
+  text-align: center;
+  animation: blink 1.5s step-end infinite;
+  text-shadow: 0 0 4px rgba(255, 99, 71, 0.5);
+}
+
+/* --- Retro Link --- */
+.retro-link {
+  color: #00BFFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-retro);
+  font-size: 14px;
+}
+
+.retro-link:hover {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.5);
+}
+
+/* --- Hit Counter --- */
+.hit-counter {
+  display: inline-flex;
+  gap: 1px;
+  background: #000;
+  padding: 2px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.hit-counter .digit {
+  background: #111;
+  color: #39FF14;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  padding: 1px 3px;
+  min-width: 10px;
+  text-align: center;
+}
+
+/* --- Webring --- */
+.webring {
+  font-family: var(--font-retro);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  padding: 6px 12px;
+  background: rgba(0, 0, 20, 0.5);
+}
+
+/* --- Sparkle Stars (title) --- */
+.sparkle-star {
+  position: absolute;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkle-twinkle 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle-twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* --- 3D Voxel Viewports --- */
+.voxel-viewport {
+  position: relative;
+  width: 100%;
+  background: #0a0020;
+  overflow: hidden;
+}
+
+.voxel-viewport canvas {
+  display: block;
+  width: 100% !important;
+}
+
+/* --- Town Layout --- */
+.town-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #0a0020;
+}
+
+.town-bottom-bar {
+  background: linear-gradient(180deg, rgba(10, 5, 30, 0.95) 0%, rgba(5, 2, 15, 0.95) 100%);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+/* --- Creature Display --- */
+.creature-display {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Chaos Drive orbs --- */
+.chaos-drive {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: #FFFFFF;
+  text-shadow: 0 0 6px currentColor;
+}
+
+.chaos-drive.drive-power {
+  background: radial-gradient(circle, #FF4444 0%, #880000 100%);
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.4);
+}
+
+.chaos-drive.drive-run {
+  background: radial-gradient(circle, #33CC33 0%, #006600 100%);
+  box-shadow: 0 0 8px rgba(51, 204, 51, 0.4);
+}
+
+.chaos-drive.drive-fly {
+  background: radial-gradient(circle, #9933CC 0%, #440066 100%);
+  box-shadow: 0 0 8px rgba(153, 51, 204, 0.4);
+}
+
+.chaos-drive.drive-swim {
+  background: radial-gradient(circle, #CCAA33 0%, #665500 100%);
+  box-shadow: 0 0 8px rgba(204, 170, 51, 0.4);
+}
+
+/* --- Wobble animation (park) --- */
+@keyframes wobble {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-3px) rotate(3deg);
+  }
+
+  75% {
+    transform: translateY(2px) rotate(-2deg);
+  }
+}
+
+/* --- Float up animation (coins) --- */
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* --- Screen enter animation --- */
+.screen-enter {
+  animation: screen-fade 0.3s ease-out;
+}
+
+@keyframes screen-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Marquee in town --- */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}

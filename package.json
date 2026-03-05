@@ -1,0 +1,19 @@
+{
+    "name": "ccllottaaworld",
+    "version": "0.1.0",
+    "private": true,
+    "description": "ccllottaaWorld — PS2-style voxel game with Client-Server / Wasm architecture",
+    "workspaces": [
+        "client",
+        "server"
+    ],
+    "scripts": {
+        "dev": "npm run dev:client & npm run dev:server",
+        "dev:client": "npm run dev --workspace=client",
+        "dev:server": "npm run dev --workspace=server",
+        "build:client": "npm run build --workspace=client",
+        "wasm:build": "cd wasm-engine && wasm-pack build --target web --out-dir ../client/wasm_out",
+        "wasm:build:release": "cd wasm-engine && wasm-pack build --target web --release --out-dir ../client/wasm_out",
+        "start:server": "npm run start --workspace=server"
+    }
+}

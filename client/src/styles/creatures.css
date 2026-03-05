@@ -1,0 +1,424 @@
+/* ============================================
+   Creature SVG Styles & Animations
+   ============================================ */
+
+/* --- Core Creature Container --- */
+.creature-svg {
+    display: inline-block;
+    overflow: visible;
+}
+
+.creature-placeholder {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: #888;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+/* --- Idle Animation --- */
+.creature-body-group {
+    transform-origin: center bottom;
+    animation: creature-idle 2.5s ease-in-out infinite;
+}
+
+@keyframes creature-idle {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* --- Blink Animation --- */
+.creature-svg .creature-eye-lid {
+    animation: creature-blink 4s ease-in-out infinite;
+}
+
+@keyframes creature-blink {
+
+    0%,
+    92%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    95% {
+        transform: scaleY(0.05);
+    }
+}
+
+/* --- Egg Wobble --- */
+.creature-egg .creature-egg-shape {
+    transform-origin: center bottom;
+    animation: egg-wobble 2s ease-in-out infinite;
+}
+
+@keyframes egg-wobble {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+/* --- Stage-Specific Animations --- */
+.creature-baby .creature-body-group {
+    animation: creature-idle 2s ease-in-out infinite;
+    /* Faster bounce for babies */
+}
+
+.creature-adult .creature-body-group {
+    animation: creature-idle 3s ease-in-out infinite;
+    /* Slower, more dignified */
+}
+
+/* --- Antenna Glow --- */
+.creature-antenna-glow {
+    animation: antenna-pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes antenna-pulse {
+    0% {
+        opacity: 0.5;
+        r: 3;
+    }
+
+    100% {
+        opacity: 1;
+        r: 5;
+    }
+}
+
+/* --- Aura Pulse --- */
+.creature-aura {
+    animation: aura-pulse 3s ease-in-out infinite;
+}
+
+@keyframes aura-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* --- Evolution Cocoon --- */
+.evolution-cocoon {
+    position: relative;
+    display: inline-block;
+}
+
+.evolution-cocoon::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(ellipse, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: cocoon-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes cocoon-glow {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.cocoon-shape {
+    animation: cocoon-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes cocoon-pulse {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(1.03);
+    }
+}
+
+/* --- Creature Display Areas --- */
+.creature-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+}
+
+.creature-display-large {
+    padding: 24px;
+}
+
+.creature-display .creature-name {
+    font-family: var(--font-pixel);
+    font-size: 14px;
+    margin-top: 8px;
+    color: #FF69B4;
+}
+
+.creature-display .creature-info {
+    font-family: var(--font-retro);
+    font-size: 16px;
+    color: #999;
+    margin-top: 4px;
+}
+
+/* --- Stat Radar Chart --- */
+.radar-chart-container {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+}
+
+/* --- Evolution Bar --- */
+.evolution-bar {
+    width: 100%;
+    max-width: 300px;
+    margin: 12px auto;
+}
+
+.evolution-bar-track {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.evolution-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FF69B4);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.evolution-bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: #999;
+    margin-top: 4px;
+}
+
+/* --- Alignment Meter --- */
+.alignment-meter {
+    width: 100%;
+    max-width: 300px;
+    margin: 12px auto;
+    text-align: center;
+}
+
+.alignment-bar {
+    height: 8px;
+    background: linear-gradient(90deg, #8B0000, #555, #1E90FF);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.alignment-marker {
+    position: absolute;
+    top: -3px;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    transition: left 0.5s ease;
+}
+
+.alignment-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-pixel);
+    font-size: 7px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* --- Creature Select Cards (upgraded) --- */
+.creature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.creature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 105, 180, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 105, 180, 0.15);
+}
+
+.creature-card.selected {
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.creature-card .card-name {
+    font-family: var(--font-pixel);
+    font-size: 11px;
+}
+
+.creature-card .card-element {
+    font-family: var(--font-retro);
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.creature-card .card-personality {
+    font-family: var(--font-comic);
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0.8;
+    min-height: 50px;
+}
+
+.creature-card .card-grades {
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    opacity: 0.6;
+}
+
+/* --- Glass Panel (modern upgrade) --- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.glass-panel-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Stat Grade Badge --- */
+.grade-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.grade-S {
+    background: #FFD700;
+    color: #000;
+}
+
+.grade-A {
+    background: #FF69B4;
+    color: #FFF;
+}
+
+.grade-B {
+    background: #00BFFF;
+    color: #FFF;
+}
+
+.grade-C {
+    background: #32CD32;
+    color: #FFF;
+}
+
+.grade-D {
+    background: #FF8C00;
+    color: #FFF;
+}
+
+.grade-E {
+    background: #808080;
+    color: #FFF;
+}
+
+/* --- Chaos Drive Item --- */
+.chaos-drive {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.15s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chaos-drive:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.chaos-drive.drive-power {
+    background: radial-gradient(circle, #FF6B6B 0%, #CC3333 100%);
+}
+
+.chaos-drive.drive-run {
+    background: radial-gradient(circle, #6BFF6B 0%, #33CC33 100%);
+}
+
+.chaos-drive.drive-fly {
+    background: radial-gradient(circle, #B56BFF 0%, #7733CC 100%);
+}
+
+.chaos-drive.drive-swim {
+    background: radial-gradient(circle, #FFE66B 0%, #CCAA33 100%);
+}

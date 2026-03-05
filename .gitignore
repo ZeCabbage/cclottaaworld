@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+client/dist/
+client/wasm_out/
+
+# Wasm build
+wasm-engine/target/
+wasm-engine/pkg/
+
+# Server generated assets
+server/output/*.glb
+
+# Environment
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Legacy archive (keep in repo for reference, but ignore in search)
+# _legacy/

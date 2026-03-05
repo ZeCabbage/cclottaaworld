@@ -1,0 +1,221 @@
+/* ============================================
+   Reusable UI Components
+   Shared patterns used across all screens.
+   All values reference tokens.css variables.
+   ============================================ */
+
+/* --- Glass Panel — PS2 Menu Style --- */
+.glass-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    box-shadow:
+        var(--glow-cyan),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* --- Section Header --- */
+.section-header {
+    font-family: var(--font-pixel);
+    font-size: var(--text-sm);
+    color: var(--pastel-lavender);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--panel-border);
+    text-shadow: var(--glow-text);
+}
+
+/* --- Stat Bar --- */
+.stat-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-bar__fill {
+    height: 100%;
+    border-radius: var(--radius-sm);
+    transition: width var(--duration-normal) var(--ease-snappy);
+}
+
+.stat-bar__fill--health {
+    background: linear-gradient(90deg, #FF4444, #FF6666);
+}
+
+.stat-bar__fill--energy {
+    background: linear-gradient(90deg, #39FF14, #66FF44);
+}
+
+.stat-bar__fill--mood {
+    background: linear-gradient(90deg, #FF69B4, #FF88CC);
+}
+
+.stat-bar__fill--hunger {
+    background: linear-gradient(90deg, #FFD700, #FFEE44);
+}
+
+.stat-bar__fill--hygiene {
+    background: linear-gradient(90deg, #00BFFF, #44CCFF);
+}
+
+/* --- Shop Card --- */
+.shop-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    cursor: pointer;
+    transition: all var(--duration-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-card:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-2px);
+}
+
+.shop-card__title {
+    font-family: var(--font-pixel);
+    font-size: var(--text-xs);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.shop-card__price {
+    font-family: var(--font-retro);
+    font-size: var(--text-md);
+    color: var(--neon-yellow);
+}
+
+.shop-card__tag {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
+    font-family: var(--font-pixel);
+    font-size: 7px;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+}
+
+.shop-card__tag--new {
+    background: var(--neon-pink);
+    color: #fff;
+}
+
+.shop-card__tag--sale {
+    background: var(--neon-green);
+    color: #000;
+}
+
+.shop-card__tag--rare {
+    background: var(--neon-purple);
+    color: #fff;
+}
+
+/* --- Item Grid --- */
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-md);
+}
+
+/* --- Color Swatch Picker --- */
+.swatch-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--duration-fast);
+}
+
+.swatch:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.swatch.active {
+    border-color: var(--pastel-cyan);
+    box-shadow: var(--glow-cyan);
+    transform: scale(1.1);
+}
+
+/* --- Toast Notification --- */
+.toast {
+    position: fixed;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    padding: var(--space-sm) var(--space-lg);
+    font-family: var(--font-retro);
+    font-size: var(--text-md);
+    color: var(--color-text-primary);
+    z-index: var(--z-toast);
+    transition: transform var(--duration-normal) var(--ease-bounce);
+    pointer-events: none;
+}
+
+.toast.visible {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* --- Option Selector (character creator, room customizer) --- */
+.option-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+}
+
+.option-chip {
+    font-family: var(--font-retro);
+    font-size: var(--text-md);
+    padding: var(--space-xs) var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--duration-fast);
+}
+
+.option-chip:hover {
+    border-color: var(--pastel-cyan);
+    color: var(--color-text-primary);
+}
+
+.option-chip.selected {
+    border-color: var(--pastel-cyan);
+    background: rgba(103, 232, 249, 0.1);
+    color: var(--pastel-cyan);
+    text-shadow: var(--glow-text);
+}
+
+/* --- Coin Pop Animation --- */
+@keyframes coinPop {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+}

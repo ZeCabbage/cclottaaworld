@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cclottaaWorld — Your World Awaits</title>
+  <meta name="description"
+    content="Welcome to cclottaaWorld! Create your character, explore the city, shop for outfits, and play mini-games in this retro 2000s virtual world!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Comic+Neue:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Retro tiled background -->
+  <div id="bg-pattern"></div>
+
+  <!-- Faux Browser Window -->
+  <div id="browser-window">
+    <!-- Title Bar -->
+    <div id="title-bar">
+      <div id="title-bar-icon">🌟</div>
+      <div id="title-bar-text">cclottaaWorld — Internet Explorer</div>
+      <div id="title-bar-buttons">
+        <button class="tb-btn minimize" title="Minimize">_</button>
+        <button class="tb-btn maximize" title="Maximize">□</button>
+        <button class="tb-btn close" title="Close">✕</button>
+      </div>
+    </div>
+
+    <!-- Menu Bar -->
+    <div id="menu-bar">
+      <span class="menu-item">File</span>
+      <span class="menu-item">Edit</span>
+      <span class="menu-item">View</span>
+      <span class="menu-item">Favorites ★</span>
+      <span class="menu-item">Tools</span>
+      <span class="menu-item">Help</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div id="nav-bar">
+      <div id="nav-buttons">
+        <button class="nav-btn" id="btn-back" title="Back">◀</button>
+        <button class="nav-btn" id="btn-forward" title="Forward">▶</button>
+        <button class="nav-btn" id="btn-refresh" title="Refresh">🔄</button>
+        <button class="nav-btn" id="btn-home" title="Home">🏠</button>
+      </div>
+      <div id="address-bar">
+        <label id="address-label">Address</label>
+        <div id="address-input">
+          <span id="address-icon">🌐</span>
+          <span id="address-text">http://www.cclottaaWorld.com/</span>
+        </div>
+        <button id="go-btn">Go</button>
+      </div>
+    </div>
+
+    <!-- Links Bar -->
+    <div id="links-bar">
+      <span class="link-item">🧍 My Profile</span>
+      <span class="link-item">🗺️ Town Map</span>
+      <span class="link-item">🎒 Inventory</span>
+      <span class="link-item">💰 <span id="coin-display">500</span> cclottaaCoins</span>
+      <span class="link-item" id="pet-status-bar">📊 Profile</span>
+    </div>
+
+    <!-- Main Viewport -->
+    <div id="viewport">
+      <div id="screen-container">
+        <!-- Screens get rendered here -->
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div id="status-bar">
+      <div id="status-left">
+        <span id="status-icon">✅</span>
+        <span id="status-text">Done</span>
+      </div>
+      <div id="status-right">
+        <span id="visitor-counter">Visitors: <span class="counter-num">004,829</span></span>
+        <span id="status-zone">Internet Zone</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Single ES Module entry point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
