@@ -40,29 +40,16 @@ function init3DPreview(viewport) {
   renderer3d.toneMappingExposure = 1.3;
   viewport.appendChild(renderer3d.domElement);
 
-  // Studio lighting — warm iridescent
-  scene.add(new THREE.AmbientLight(0xC4B5FD, 0.5));
+  // PS2 Cel-Shaded Lighting Setup
+  const ambient = new THREE.AmbientLight(0xffe0f0, 0.4);
+  scene.add(ambient);
 
-  const key = new THREE.DirectionalLight(0xFFFFFF, 1.4);
-  key.position.set(3, 5, 4);
-  scene.add(key);
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  keyLight.position.set(2, 4, 2);
+  scene.add(keyLight);
 
-  const fill = new THREE.DirectionalLight(0x67E8F9, 0.6);
-  fill.position.set(-4, 3, 2);
-  scene.add(fill);
-
-  const rim = new THREE.DirectionalLight(0xFDA4AF, 0.5);
-  rim.position.set(0, 2, -4);
-  scene.add(rim);
-
-  // Iridescent point lights for room ambience
-  const glowCyan = new THREE.PointLight(0x67E8F9, 0.3, 12);
-  glowCyan.position.set(-3, 0, -2);
-  scene.add(glowCyan);
-
-  const glowRose = new THREE.PointLight(0xFDA4AF, 0.3, 12);
-  glowRose.position.set(3, 0.5, -2);
-  scene.add(glowRose);
+  const hemiLight = new THREE.HemisphereLight(0xb0e0ff, 0xffb0c8, 0.6);
+  scene.add(hemiLight);
 
   // Floor — reflective chrome platform
   const platGeo = new THREE.CylinderGeometry(1.4, 1.5, 0.06, 48);
@@ -128,7 +115,7 @@ function init3DPreview(viewport) {
   function animate() {
     animId = requestAnimationFrame(animate);
     const t = performance.now() * 0.001;
-    if (charGroup) charGroup.rotation.y += 0.008;
+    if (charGroup) charGroup.rotation.y += 0.005;
     // Float orbs
     for (const orb of orbs) {
       orb.position.y = orb.userData.originY + Math.sin(t * orb.userData.speed + orb.userData.phase) * 0.3;
